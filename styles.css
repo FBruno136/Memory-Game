@@ -76,10 +76,14 @@ body {
   
   .card.flipped .card-back {
     transform: rotateY(180deg);
+    transition: transform 0.3s;
+    z-index: 2; /* Envia para frente ao virar */
   }
   
   .card.flipped .card-front {
+    z-index: 1; /* Envia para trás ao virar */
     transform: rotateY(0deg);
+    transition: transform 0.3s;
   }
   
   .card.flipped {
@@ -93,13 +97,16 @@ body {
   }
   
   #restart-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+    position: absolute; 
+    top: 10px; 
+    left: 10px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border: none; 
+    background-color: #007bff; 
+    color: white; 
+    border-radius: 5px; 
+    cursor: pointer; 
   }
   
   #restart-button:hover {

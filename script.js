@@ -54,6 +54,7 @@ function shuffle(array) {
     const cardImage = document.createElement("img");
     cardImage.src = cardData.img;
     cardImage.classList.add("card-image");
+    cardImage.alt = cardData.value; // Atribui a letra como alternativa
     cardImage.style.display = "none"; // Oculta até a carta ser virada
 
     cardImage.onerror = () => {
@@ -80,7 +81,7 @@ function shuffle(array) {
     const front = this.querySelector(".card-front");
     const back = this.querySelector(".card-back");
     const cardImage = back.querySelector(".card-image");
-  
+
     if (cardImage && cardImage.complete && cardImage.style.display !== "none") {
       cardImage.style.display = "block"; // Mostra a imagem
       front.textContent = ""; // Remove o "?"
