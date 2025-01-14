@@ -1,13 +1,13 @@
 // Lista de cartas com valores e imagens personalizadas
 const cards = [
-    { value: "A", img: "images/img1.png" },
-    { value: "A", img: "images/img1.png" },
-    { value: "B", img: "images/img2.png" },
-    { value: "B", img: "images/img2.png" },
-    { value: "C", img: "images/img3.png" },
-    { value: "C", img: "images/img3.png" },
-    { value: "D", img: "images/img4.png" },
-    { value: "D", img: "images/img4.png" },
+    { value: "A", img: "images/copas.png" },
+    { value: "A", img: "images/copas.png" },
+    { value: "B", img: "images/espada.png" },
+    { value: "B", img: "images/espada.png" },
+    { value: "C", img: "images/ouro.png" },
+    { value: "C", img: "images/ouro.png" },
+    { value: "D", img: "images/paus.png" },
+    { value: "D", img: "images/paus.png" },
 ];
   
   let firstCard = null;
@@ -39,7 +39,7 @@ function shuffle(array) {
 
     // Imagem padrão (antes de virar)
     const defaultImage = document.createElement("img");
-    defaultImage.src = "images/back.png"; // Caminho para a imagem padrão
+    defaultImage.src = "images/fundo.png"; // Caminho para a imagem padrão
     defaultImage.classList.add("default-image");
     defaultImage.alt = "?";
 
@@ -80,9 +80,6 @@ function shuffle(array) {
     const front = this.querySelector(".card-front");
     const back = this.querySelector(".card-back");
     const cardImage = back.querySelector(".card-image");
-    const defaultImage = front.querySelector(".default-image");
-
-    defaultImage.style.display = "none"; // Oculta a imagem padrão
   
     if (cardImage && cardImage.complete && cardImage.style.display !== "none") {
       cardImage.style.display = "block"; // Mostra a imagem
@@ -109,10 +106,12 @@ function shuffle(array) {
         showCongratulations();
       }
     } else {
+      // Vira as cartas de volta após 1 segundo
       setTimeout(() => {
-        firstCard.classList.remove("flipped");
-        secondCard.classList.remove("flipped");
-        resetCards();
+          firstCard.classList.remove("flipped");
+          secondCard.classList.remove("flipped");
+          firstCard = null;
+          secondCard = null; // Reinicia as cartas para a próxima jogada
       }, 1000);
     }
   }

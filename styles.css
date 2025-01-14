@@ -12,16 +12,16 @@ body {
   
   #game-container {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
+    grid-template-columns: repeat(4, 220px);
     gap: 10px;
     justify-content: center;
     margin: 20px auto;
   }
   
   .card {
-    width: 100px;
-    height: 100px;
-    background-color: #333;
+    width: 200px;
+    height: 295px;
+    background-image: image-set(url('images/fundo.png'));
     border-radius: 8px;
     cursor: pointer;
     display: flex;
