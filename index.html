@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Memória</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Jogo da Memória</h1>
+  <div id="game-container"></div>
+  <p id="moves">Jogadas: 0</p>
+  <button id="restart-button" onclick="restartGame()">Recomeçar</button>
+
+  <div id="chat-box">
+    <div id="chat-icon">(i)</div>
+    <div id="chat-message">Não foi possível carregar as imagens corretamente.</div>
+  </div>  
+
+  <div id="congratulations">
+    <h2>Parabéns! Você venceu!</h2>
+    <div class="fireworks"></div>
+    <div class="fireworks"></div>
+    <div class="fireworks"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
