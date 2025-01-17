@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+#moves {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+#restart-button {
+  position: absolute; 
+  top: 10px; 
+  left: 10px; 
+  padding: 10px 20px; 
+  font-size: 16px; 
+  border: none; 
+  background-color: #007bff; 
+  color: white; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+#restart-button:hover {
+  background-color: #0056b3;
+}
