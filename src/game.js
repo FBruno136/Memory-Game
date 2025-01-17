@@ -4,14 +4,14 @@ import { flipCard, unflipCard } from './flipCard.js';
 
 //Um array de objetos, onde cada objeto representa uma carta
 export const cards = [
-  { value: "A", img: "images/copas.png" },
-  { value: "A", img: "images/copas.png" },
-  { value: "B", img: "images/espada.png" },
-  { value: "B", img: "images/espada.png" },
-  { value: "C", img: "images/ouro.png" },
-  { value: "C", img: "images/ouro.png" },
-  { value: "D", img: "images/paus.png" },
-  { value: "D", img: "images/paus.png" },
+  { value: "A", img: "images/copas.png", errorImg: "images/joker.png" },
+  { value: "A", img: "images/copas.png", errorImg: "images/joker.png" },
+  { value: "B", img: "images/espada.png", errorImg: "images/joker.png" },
+  { value: "B", img: "images/espada.png", errorImg: "images/joker.png" },
+  { value: "C", img: "images/ouro.png", errorImg: "images/joker.png" },
+  { value: "C", img: "images/ouro.png", errorImg: "images/joker.png" },
+  { value: "D", img: "images/paus.png", errorImg: "images/joker.png" },
+  { value: "D", img: "images/paus.png", errorImg: "images/joker.png" },
 ];
 
 //Variáveis para controlar o estado do jogo
@@ -19,7 +19,7 @@ let firstCard = null;
 let secondCard = null;
 let moves = 0;
 let matchedPairs = 0;
-let isChecking = false; // Bloqueio para evitar cliques enquanto verifica
+let isChecking = false; 
 
 const gameContainer = document.getElementById('game-container');
 const movesDisplay = document.getElementById('moves');
@@ -61,7 +61,8 @@ function handleCardFlip(card) {
 }
 
 function checkMatch() {
-  if (!firstCard || !secondCard) return; // Verifica se as cartas estão definidas
+  // Verifica se as cartas estão definidas
+  if (!firstCard || !secondCard) return; 
 
   if (firstCard.dataset.value === secondCard.dataset.value) {
     matchedPairs++;
@@ -69,14 +70,14 @@ function checkMatch() {
     if (matchedPairs === cards.length / 2) {
       showCongratulations();
     }
-    isChecking = false; // Libera para virar outras cartas
+    isChecking = false; 
   } else {
     // Vira as cartas de volta após 1 segundo
     setTimeout(() => {
       unflipCard(firstCard);
       unflipCard(secondCard);
       resetCards();
-      isChecking = false; // Libera para virar outras cartas
+      isChecking = false; 
     }, 1000);
   }
 }
@@ -90,7 +91,7 @@ function resetGameState() {
   gameContainer.innerHTML = '';
   moves = 0;
   matchedPairs = 0;
-  isChecking = false; // Reseta o bloqueio
+  isChecking = false; 
   movesDisplay.textContent = `Jogadas: ${moves}`;
   congratulations.style.display = 'none';
 }
