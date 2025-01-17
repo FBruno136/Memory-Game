@@ -14,11 +14,12 @@ export const cards = [
   { value: "D", img: "images/paus.png" },
 ];
 
-
+//Variáveis para controlar o estado do jogo
 let firstCard = null;
 let secondCard = null;
 let moves = 0;
 let matchedPairs = 0;
+let isChecking = false; // Bloqueio para evitar cliques enquanto verifica
 
 const gameContainer = document.getElementById('game-container');
 const movesDisplay = document.getElementById('moves');
@@ -34,8 +35,8 @@ export function startGame() {
 }
 
 function handleCardFlip(card) {
-  // Evita selecionar a mesma carta duas vezes
-  if (card === firstCard || card.classList.contains("flipped")) return;
+  // Previne virar mais cartas enquanto verifica um par
+  if (isChecking || card === firstCard || card.classList.contains("flipped")) return;
 
   // Vira a carta
   flipCard(card);
@@ -47,6 +48,9 @@ function handleCardFlip(card) {
   }
 
   secondCard = card;
+
+  // Bloqueia novas ações enquanto verifica o par
+  isChecking = true;
 
   // Incrementa as jogadas
   moves++;
@@ -65,12 +69,14 @@ function checkMatch() {
     if (matchedPairs === cards.length / 2) {
       showCongratulations();
     }
+    isChecking = false; // Libera para virar outras cartas
   } else {
     // Vira as cartas de volta após 1 segundo
     setTimeout(() => {
       unflipCard(firstCard);
       unflipCard(secondCard);
       resetCards();
+      isChecking = false; // Libera para virar outras cartas
     }, 1000);
   }
 }
@@ -80,11 +86,11 @@ function resetCards() {
   secondCard = null;
 }
 
-
 function resetGameState() {
   gameContainer.innerHTML = '';
   moves = 0;
   matchedPairs = 0;
+  isChecking = false; // Reseta o bloqueio
   movesDisplay.textContent = `Jogadas: ${moves}`;
   congratulations.style.display = 'none';
 }

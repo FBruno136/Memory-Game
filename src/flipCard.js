@@ -1,30 +1,31 @@
 import { cards } from './game.js';
+
 // Função para virar a carta
 export function flipCard(card) {
+
     // Verifica se a carta já está virada
     if (card.classList.contains("flipped")) return;
   
     // Adiciona a classe para aplicar o efeito de virar
     card.classList.add("flipped");
-  
+
     // Seleciona os elementos da frente e de trás da carta
     const front = card.querySelector(".card-front");
     const back = card.querySelector(".card-back");
-    const cardImage = back.querySelector(".card-image");
     const cardValue = card.dataset.value;
-    const matchedCard = cards.find(c => c.value === cardValue);
-  
+    
+    const matchedCard = cards.find(c => {
+      return c.value.toLowerCase() === cardValue.trim().toLowerCase();
+    });
     // Exibe a imagem da carta caso ela exista e esteja carregada
-    if (cardImage && cardImage.complete && cardImage.style.display !== "none") {
-      cardImage.style.display = "block"; // Mostra a imagem
-      back.style.backgroundImage = `url("${matchedCard.img}")`; // Define a imagem correspondente
-      front.textContent = ""; // Remove qualquer texto da frente
+    if (matchedCard) {  
+      back.style.backgroundImage = `url("${matchedCard.img}")`;
+      front.textContent = "";
+      console.log(`Imagem aplicada: ${matchedCard.img}`);
     } else {
-      front.textContent = card.dataset.value; // Mostra o valor textual da carta
-      back.textContent = card.dataset.value; // Mostra o valor textual da carta
-      console.error(`Carta com valor ${cardValue} não encontrada no array cards.`);
-    }
+      console.error(`Erro: Carta com valor ${cardValue} não encontrada no array.`);
   }
+}
   
   // Função para desvirar a carta
 export function unflipCard(card) {
